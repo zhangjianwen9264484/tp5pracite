@@ -1,0 +1,80 @@
+    {include file="common/header"}
+        <!--顶部通栏-->
+        <script src='/jiehun/goto/my-65547.js' language='javascript'></script>
+
+        <div class="position"><a href="{:url('Index/index')}">主页</a> >  
+                <a href="{:url('Lst/index',array('cateid'=>$cid))}">{$catename}</a> >  
+        </div>
+            
+        <div class="overall">
+            <div class="left">
+                {volist name="article" id="vo"}
+                    <div class="scrap">
+                        <h1>{$vo.title}</h1>
+                        <div class="spread">
+                            <span class="writor">发布时间：{$vo.time|date="Y-m-d",###}</span>
+                            <span class="writor">编辑：{$vo.author}</span>
+                            <span class="writor">标签：
+                                {volist name="vo.tags" id="tag"}
+                                <a href="{:url('Lst/index',array('tagid'=>$tag['id']))}">{$tag.tagname}</a>
+                                {/volist}
+                            </span>
+                            <span class="writor">热度：{$vo.click}<script src="/jiehun/plus/count.php?view=yes&aid=156214&mid=55" type='text/javascript' language="javascript"> </script></span>
+                        </div>
+                    </div>
+
+                    <!--百度分享-->
+                    <script src='/jiehun/goto/my-65542.js' language='javascript'></script>
+
+                    <div class="takeaway">
+                        <span class="btn arr-left"></span>
+                        <p class="jjxq">{$vo.desc}</p>
+                        <span class="btn arr-right"></span>
+                    </div>
+
+                      <script src='/jiehun/goto/my-65541.js' language='javascript'></script>
+
+                    <div class="substance">
+                        {$vo.content}
+                    </div>
+
+
+                    <div class="biaoqian">
+                       
+                    </div>
+
+                {/volist}
+                    <!--相关阅读 -->
+                    <div class="xgread">
+                        <div class="til"><h4>相关阅读</h4></div>
+                        <div class="lef"><!--相关阅读主题链接--><script src='/jiehun/goto/my-65540.js' language='javascript'></script></div>
+                        <div class="rig">
+                            <ul>
+                                {volist name="articles" id="in"}
+                                    <li><a href="{:url('Article/index',array('aid'=>$in['id']))}" target="_blank">{$in.keywords}</a></li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--频道推荐-->
+                    <div class="hotsnew">
+                        <div class="til"><h4>频道推荐</h4></div>
+                        <ul>
+                        {volist name="recart" id="tj"}
+                            <li><div class="tu"><a href="{:url('Article/index',array('aid'=>$tj['id']))}" target="_blank"><img src="__IMG__{$tj['pic']}" alt="广州公司聚餐好去处 聚餐"/></a></div><p><a href="{:url('Article/index',array('aid'=>$tj['id']))}">{$tj.title}</a></p></li>
+                        {/volist}
+                        </ul>
+                    </div>		
+            </div>
+                <!--右侧各种广告-->
+                <!--猜你喜欢-->
+            {include file="common/right"}
+    
+    </div>
+
+    {include file="common/footer"}
+        <div style="display:none;"><script src='/jiehun/goto/my-65537.js' language='javascript'></script><script src="/jiehun/images/js/count_zixun.js" language="JavaScript"></script></div>
+
+    </body>
+</html>

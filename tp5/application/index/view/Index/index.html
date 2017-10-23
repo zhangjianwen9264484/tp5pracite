@@ -1,0 +1,41 @@
+	{include file="common/header"}
+<!--顶部通栏-->
+
+	<div class="position"></div>
+
+	<div class="overall">
+
+		<div class="left">
+			{volist name="articles" id="v"}
+				<div class="xnews2">
+						<div class="pic">
+						<a target="_blank" href="{:url('Article/index',array('aid'=>$v['id']))}">
+						<img src="__IMG__{$v['pic']}" alt="在家如何自制烤肉 烤肉串致癌不适宜多吃"/></a>
+						</div>
+						<div class="dec">
+							<h3><a target="_blank" href="{:url('Article/index',array('aid'=>$v['id']))}">{$v.title}</a></h3>
+							<div class="time">发布时间：{$v.time|date="Y-m-d",###}</div>
+							<p>{$v.desc}</p>
+							<div class="tags">{$v.keywords}</div>
+						</div>
+				</div>
+			{/volist}
+				<div class="pages">
+					<div class="plist" >
+						{$pages}
+					</div>
+				</div>
+		</div>
+		<!--右侧各种广告-->
+            <!--猜你喜欢-->
+            {include file="common/right"}
+	
+	</div>
+
+	{include file="common/footer"}
+
+	<div style="display:none;">
+		<script src='goto/my-65537.js' language='javascript'></script><script src="images/js/count_zixun.js" language="JavaScript"></script>
+	</div>
+</body>
+</html>
